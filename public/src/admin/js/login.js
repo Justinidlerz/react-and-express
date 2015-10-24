@@ -14,10 +14,6 @@ const phoneFilter = /^1\d{10}$/;
 class LoginForm extends Component {
     constructor(props , context){
         super(props , context);
-        let debug = new RegExp("(^|\\?|&)debug=([^&]*)(\\s|&|$)", "i");
-        if(window.location.host != "www.liwumao.cn" && !debug.test(window.location.href)){
-            window.location.replace(window.location.href.replace(window.location.host,"www.liwumao.cn"))
-        }
         this.state = {
             email: "",
             password: "",
@@ -117,12 +113,6 @@ class LoginForm extends Component {
             this.handleLogin()
         }
     }
-    loginByWeibo (){
-        window.open('/LoginByThird/sinaLogin','oauth2Login_10000' ,'height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes');
-    }
-    loginByQQ(){
-        window.open('/LoginByThird/qqLogin','oauth2Login_10000' ,'height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes');
-    }
     render(){
         let msgModal = '';
         if (this.state.alertVisible) {
@@ -139,10 +129,6 @@ class LoginForm extends Component {
                     <Input type='password' placeholder='密码' name="password" onChange={this.handleChange.bind(this)} bsStyle={this.state.passwordPass} onKeyPress={this.handleKeyPress.bind(this)} hasFeedback />
                     <Input type='checkbox' label='7天内自动登录' value="1" checked={this.state.remember} onChange={this.handleCheck.bind(this)} />
                     <Button bsStyle="primary" bsSize='large' block onClick={this.handleLogin.bind(this)} disabled={this.state.disabled} >登录</Button>
-                    <div className="third-login">
-                        <Button bsStyle="success" bsSize='xsmall' onClick={ this.loginByQQ.bind(this) }>QQ</Button>
-                        <Button bsStyle="success" bsSize='xsmall' onClick={ this.loginByWeibo.bind(this) } >微博</Button>
-                    </div>
                 </div>
             </div>
         );

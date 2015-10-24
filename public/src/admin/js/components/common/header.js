@@ -19,7 +19,7 @@ class Header extends Component{
     render () {
         return (
             <div id="header">
-                <a className="btn-header logo" href="/"><h3>礼物猫</h3></a>
+                <a className="btn-header logo" href="/"><h3>后台管理</h3></a>
                 <a className="btn-header logout" onClick={this.handleLogout.bind(this)}><h4>退出</h4></a>
             </div>
         )

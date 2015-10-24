@@ -109,11 +109,11 @@ class Users extends Component{
     }
     render () {
         const page =this.state.total != 0
-            ? <Pages getData={this.getUsers.bind(this)} total={this.state.total} activePage={this.props.params.page} parent="Users" />
+            ? <Pages getData={this.getUsers.bind(this)} total={this.state.total} activePage={this.props.params.page} parent="users" />
             : "";
         return (
             <div>
-                <Title title="用户" parent="Users" />
+                <Title title="用户" parent="users" />
                 <div className="common-content">
                     <Table>
                         <thead>

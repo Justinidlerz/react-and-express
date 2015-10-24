@@ -4,7 +4,7 @@ class Home extends Component{
     render () {
         return (
             <div>
-                礼物猫
+                后台管理
             </div>
         )
     }
