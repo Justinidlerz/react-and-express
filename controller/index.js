@@ -5,9 +5,21 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-  var onlineUsers = {};
+  res.render('index', { title: 'Express' });
 
-  io.on("create",function(socketio){
+});
+
+module.exports = router;
+
+
+
+
+
+/**
+
+ var onlineUsers = {};
+
+ io.on("create",function(socketio){
 
     socketio.on('connection', function(socket){
       console.log('a user connected');
@@ -58,9 +70,4 @@ router.get('/', function(req, res, next) {
 
   });
 
-  res.render('index', { title: 'Express' });
-});
-
-
-
-module.exports = router;
+ */

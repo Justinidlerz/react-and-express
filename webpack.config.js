@@ -4,21 +4,21 @@ var webpack = require('webpack');
 module.exports = {
   devtool: false,//'cheap-module-eval-source-map',
   entry: {
-    "admin-login" : './Static/src/admin/js/login',
-    "admin-index" : './Static/src/admin/js/index'
+    //"admin-login" : './Static/src/admin/js/login',
+    "admin-index" : './views/index'
   },
   output: {
-    path: path.join(__dirname, 'Static/js'),
+    path: path.join(__dirname, 'public/js'),
     filename: '[name].js',
-    publicPath: '/Static/'
+    publicPath: '/public/'
   },
-  plugins : [
+  /*plugins : [
     new webpack.optimize.CommonsChunkPlugin('admin-common.js')
-  ],
+  ],*/
   module: {
     loaders: [{
       test: /\.js$/,
-      loaders: ['react-hot', 'babel'],
+      loaders: ['babel'],
       exclude: /node_modules/,
       include: __dirname
     },{
