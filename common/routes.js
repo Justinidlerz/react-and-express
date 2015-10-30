@@ -3,13 +3,13 @@
  */
 var index = require('../controller/index');
 var users = require('../controller/users');
+var admin = require('../controller/admin');
 var _ = require("lodash");
 
 var routes = {
-    '/' : index,
-    '/users' : users
+    "/" : index,
+    "/admin" : admin
 };
-
 
 module.exports = function(app){
 
@@ -20,6 +20,37 @@ module.exports = function(app){
 
     _.forEach(routes,function( i , j ){
         app.use( j , i );
+    });
+
+    // catch 404 and forward to error handler
+    app.use(function(req, res, next) {
+        var err = new Error('Not Found');
+        err.status = 404;
+        next(err);
+    });
+
+    // error handlers
+
+    // development error handler
+    // will print stacktrace
+    if (app.get('env') === 'development') {
+        app.use(function(err, req, res, next) {
+            res.status(err.status || 500);
+            res.render('error', {
+                message: err.message,
+                error: err
+            });
+        });
+    }
+
+    // production error handler
+    // no stacktraces leaked to user
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: {}
+        });
     });
 
 };
